@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shutterfeel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Добавляем анимацию появления, которая была в React-коде */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Эффект зернистости */
+        .grain-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 30;
+            opacity: 0.03;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+    </style>
+</head>
+<body class="bg-black m-0 p-0 overflow-hidden">
+
+    <div class="relative h-screen w-full flex items-center justify-center">
+        
+        <div class="absolute inset-0 z-0">
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                class="h-full w-full object-cover"
+            >
+                <source src="68222bff4288bb35ff4929b2_Spirit (New 3D Music Visual)-transcode.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/20 z-10"></div>
+        </div>
+
+        <div class="relative z-20 animate-fade-in">
+            <a 
+                href="https://t.me/shutterfeel" 
+                target="_blank"
+                class="block cursor-pointer group relative"
+            >
+                <div class="bg-white p-2 transition-all duration-700 ease-out group-hover:scale-110 group-active:scale-95 shadow-2xl">
+                    <img 
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://t.me/shutterfeel&color=000&bgcolor=fff" 
+                        alt="QR Shutterfeel" 
+                        class="w-20 h-20 md:w-28 md:h-28 block opacity-95 group-hover:opacity-100 transition-opacity"
+                    />
+                </div>
+
+                <div class="absolute -inset-4 bg-white/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            </a>
+        </div>
+
+        <div class="grain-overlay"></div>
+    </div>
+
+</body>
+</html>
